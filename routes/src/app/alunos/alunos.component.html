@@ -1,0 +1,16 @@
+<div class="row">
+    <h4>Lista de Alunos</h4>
+
+    <div class="col l6">
+      <div class="collection">
+        <a class="collection-item"
+        *ngFor="let aluno of alunos"
+        [routerLink]="aluno.id" >{{ aluno.nome}}</a>
+      </div>
+    </div>
+    <div class="col l6">
+        <router-outlet></router-outlet>
+    </div>
+    
+</div>
+
