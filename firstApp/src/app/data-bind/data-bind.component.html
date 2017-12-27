@@ -1,0 +1,100 @@
+<!-- <h1>Data Bind</h1>
+<p>Area da interpolacao: {{ url }} </p>
+
+
+<article>
+  <span>Interpolation</span>
+  <img src="{{urlImagem}}">
+  <span>Property bind</span>
+  <img [src]="urlImagem"> 
+  <span>Property bind</span>
+  <img bind-src="urlImagem">
+</article> -->
+<!-- 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">Teste</div>
+    <div class="col-me-6">Teste2</div>
+  </div>
+</div>
+<h3>Class e Style Bind</h3>
+<div>
+  Selecione uma classe: 
+  <select #classe (change)="0" >
+    <option value=""></option>
+    <option value="alert-success">Success</option>
+    <option value="alert-info">Info</option>
+    <option value="alert-warning">Warning</option>
+    <option value="alert-danger">Danger</option>
+  </select>
+  <div>
+    <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'"
+    [style.display]="classe.value == 'alert-success' ? 'block' : 'none'">
+      Success
+    </div>
+    <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'"
+    [style.display]="classe.value == 'alert-info' ? 'block' : 'none'">
+      Info
+    </div>
+    <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'"
+    [style.display]="classe.value == 'alert-warning' ? 'block' : 'none'">
+      Warning
+    </div>
+    <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'"
+    [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'" >
+      Danger
+    </div>
+  </div>
+
+</div> -->
+<!-- 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button (click)="botaoClicado()" class="btn btn-default">
+        Click Here!
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" 
+            (keyup)="onKeyUp($event)" 
+            (keyup.enter)="onKeyUp2($event.target.value)"
+            (blur)="onKeyUp2(campo.value)"
+            #campo>
+      <p>Valor do Input: {{valorInput}}</p>
+      <p>Valor do Salvo: {{valorInput2}}</p>
+    </div>
+    <div class="col-md-12">
+        <span (mouseover)="onOverAndOut()"
+              (mouseout)="onOverAndOut()"
+              [class.highlight]="isOnTarget" >Passe o mouse sobre as letras</span>
+    </div>
+  </div>
+  
+</div> -->
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Two Way Data-Binding</h3>
+      <div>
+        <input type="text" [value]="nome" (input)="nome = $event.target.value">
+        <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event">
+
+
+        <input type="text" [(ngModel)]="nome">
+        <p>Voce digitou o nome {{ nome }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<section class="">
+  <article>
+    <h3>Input/Output Properties</h3>
+    <app-curso [nome]="nomeDoCurso"></app-curso>
+    <contador [valor]="valIni" (mudouValor)="onMudouValor($event)"></contador>
+  </article>
+</section>
