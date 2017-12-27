@@ -1,0 +1,23 @@
+<p>
+  exemplo-pipe works!
+</p>
+<p>Título: {{ livro.titulo | uppercase | lowercase | camelCase }}</p>
+<p>Estrelas: {{ livro.rating | number:'1.1-1' }}</p>
+<p>Páginas: {{ livro.numeroPaginas | number }}</p>
+<p>Preço: {{ livro.preco | currency:'BRL':true }}</p>
+<p>Data Lançamento: {{ livro.dataLancamento | date:'dd-MMM-yyyy' }}</p>
+<p>Url: {{ livro.url }}</p>
+<br>
+<p>Livro: {{ livro | json }}</p>
+
+<!-- | uppercase | lowercase | camelCase-->
+
+<h5>Filtro</h5>
+<input type="text" [(ngModel)]="filtro">
+
+<ul>
+  <li *ngFor="let item of obterCursos()">{{item}}</li>
+</ul>
+
+<p>{{ valorAsync | async }}</p>
+<p>{{ valorAsync2 | async }}</p>
