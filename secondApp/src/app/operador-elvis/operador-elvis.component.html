@@ -1,0 +1,6 @@
+<h5>Sem o Elvis</h5>
+<p>Descrição: {{ tarefa.desc }}</p>
+<p>Responsável: {{ tarefa.responsavel.nome != null ? tarefa.responsavel.nome : '' }}</p>
+<h5>Agora com o elvis</h5>
+<p>Descricao: {{ tarefa.desc }}</p>
+<p>Responsável: {{ tarefa.responsavel?.nome  }}</p>

@@ -1,0 +1,54 @@
+<div class="col-md-12">
+  <h3>Ng-Else</h3>
+</div>
+<div class="col-md-12">
+  <div *ngIf="mostrarCurso">
+    Listar Cursos
+  </div>
+  <div *ngElse="mostrarCurso">
+    Não achou nenhum curso
+  </div>
+  <ng-template [ngElse]="mostrarCurso">
+    <div>
+      Não foi localizado nenhum curso
+    </div>
+  </ng-template>
+  <button (click)="onMostrarCursos()">Visualizar/Esconder</button>
+</div>
+
+
+
+
+
+<!-- <p fundoAmarelo>
+  O Fundo é amarelo!
+</p>
+
+<button fundoAmarelo >Com fundo amarelo</button>
+
+
+<p highlightMouse>Texto com highlight com o mouse!</p> -->
+<!-- Selecione a cor de inicio:
+<select [(ngModel)]="corDefault">
+  <option value=""></option>
+  <option value="white">white</option>
+  <option value="red">red</option>
+  <option value="blue">blue</option>
+  <option value="purple">purple</option>
+  <option value="pink">pink</option>
+  <option value="orange">orange</option>
+</select>
+<br>
+<br>
+Selecione a cor quando estiver sobre o texto:
+<select [(ngModel)]="corHighlight">
+    <option value=""></option>
+    <option value="white">white</option>
+    <option value="silver">silver</option>
+    <option value="blue">blue</option>
+    <option value="purple">purple</option>
+    <option value="green">green</option>
+    <option value="black">black</option>
+  </select>
+<p highlight [defaultColor]="corDefault" [highlight]="corHighlight">Texto com highlight com cores customisadas</p> -->
+

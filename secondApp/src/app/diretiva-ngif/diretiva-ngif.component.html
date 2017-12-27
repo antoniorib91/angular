@@ -1,0 +1,12 @@
+<h4>
+  *NgIf
+</h4>
+<div [hidden]="!mostrarCursos">
+    <ul>
+      <li *ngFor="let item of cursos">{{item}}</li>
+    </ul>
+</div>
+<div [hidden]="mostrarCursos">
+  <p>Não há cursos a serem listados!</p>
+</div>
+<button (click)="onMostrarCursos()" class="btn btn-primary">Exibir/Esconder</button>

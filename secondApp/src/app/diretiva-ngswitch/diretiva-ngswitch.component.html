@@ -1,0 +1,26 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="aba == 'home'" (click)="aba = 'home'" >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="aba == 'mapa'" (click)="aba = 'mapa'" >Mapa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="aba == 'lista'" (click)="aba = 'lista'" >Lista</a>
+        </li>    
+      </ul> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" [ngSwitch]="aba">
+      <p *ngSwitchCase="'mapa'">Modo Mapa Ativado</p>
+      <p *ngSwitchCase="'lista'">Modo Lista Ativado</p>
+      <p *ngSwitchDefault>Modo Home! Hellow World</p>
+    </div>
+  </div>
+</div>
+
