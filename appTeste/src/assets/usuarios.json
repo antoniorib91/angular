@@ -1,0 +1,10 @@
+[
+    {
+        "nome":   "joao",
+        "senha":  "123456",
+        "tipo":   1,
+        "token":  "",
+        "exp":    "",
+        "secret": "bagual"
+    }
+]
