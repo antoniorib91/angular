@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from '../../autenticacao/autenticacao.service';
 
 @Component({
   selector: 'menu-top',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuTopComponent implements OnInit {
 
+  autenticado = false;
+
   constructor(
+    private autenticacaoService: AutenticacaoService
   ) { }
 
   ngOnInit() {
+    this.autenticado = this.autenticacaoService.getStatusAutenticacao();
   }
 
 }

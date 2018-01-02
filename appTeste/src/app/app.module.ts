@@ -11,7 +11,7 @@ import { PersonagemComponent } from './personagem/personagem.component';
 
 import { AutenticacaoService } from './autenticacao/autenticacao.service';
 
-import { AutenticacaoGuard } from './autenticacao/guards/autenticacao.guard';
+import { AutenticacaoGuard } from './shared/guards/autenticacao.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { AutenticacaoGuard } from './autenticacao/guards/autenticacao.guard';
     AutenticacaoModule
   ],
   providers: [
-    AutenticacaoGuard
+    AutenticacaoGuard,
+    AutenticacaoService
   ],
   bootstrap: [AppComponent]
 })

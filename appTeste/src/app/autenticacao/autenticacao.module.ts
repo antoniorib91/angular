@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AutenticacaoService } from './autenticacao.service';
+import { AutenticacaoRoutingModule } from './autenticacao-routing.module';
+
 import { LoginComponent } from './login/login.component';
-import { AutenticacaoRoutingModule } from './autenticacao-routing.module'
+import { LogoutComponent } from './logout/logout.component'
 
 @NgModule({
   imports: [
@@ -14,11 +16,10 @@ import { AutenticacaoRoutingModule } from './autenticacao-routing.module'
     ReactiveFormsModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
-  providers: [
-    AutenticacaoService
-  ],
+  providers: [],
 
 
 })

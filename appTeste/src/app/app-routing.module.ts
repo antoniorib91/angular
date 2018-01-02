@@ -3,19 +3,24 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PersonagemComponent } from './personagem/personagem.component';
+import { AutenticacaoGuard } from './shared/guards/autenticacao.guard';
 
 const routes: Routes = [
   { 
-    path: '',
-    component: HomeComponent
+    path:               '',
+    component:          HomeComponent,
+    canActivate:        [AutenticacaoGuard],
+    canLoad:            [AutenticacaoGuard]
   },
   { 
-    path: 'personagens',
-    component: PersonagemComponent
+    path:               'personagens',
+    component:          PersonagemComponent,
+    canActivate:        [AutenticacaoGuard],
+    canLoad:            [AutenticacaoGuard]
   },
   { 
-    path: 'login',
-    loadChildren: 'app/autenticacao/autenticacao.module#AutenticacaoModule',
+    path:               'autenticacao',
+    loadChildren:       'app/autenticacao/autenticacao.module#AutenticacaoModule'
   }
 ];
 

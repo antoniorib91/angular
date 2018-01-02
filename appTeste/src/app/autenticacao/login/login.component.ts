@@ -31,9 +31,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    if( this.formulario.valid ){
 
-      this.autenticacaoService.login( 'joao', '123456');
+    if( this.formulario.valid ){
+      
+      let nome  = this.formulario.get('nome').value; 
+      let email = this.formulario.get('senha').value;
+      
+      this.autenticacaoService.login( nome , email );
 
     }else{
       alert("Form False");

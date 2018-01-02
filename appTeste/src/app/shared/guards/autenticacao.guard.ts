@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AutenticacaoService } from '../autenticacao.service';
+import { AutenticacaoService } from '../../autenticacao/autenticacao.service';
 import { CanActivate, CanLoad } from '@angular/router/src/interfaces';
 import { 
     Route, 
@@ -26,11 +26,13 @@ export class AutenticacaoGuard implements CanActivate, CanLoad {
 
     private validaStatusLogin(){
         
-        if( this.autenticacaoService.getStatusAutenticacao() ){
+        let auth = this.autenticacaoService.getStatusAutenticacao();
+
+        if( auth ){
             return true;
         }
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/autenticacao']);
         return false;
     }
     

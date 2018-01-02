@@ -7,21 +7,30 @@ import { AutenticacaoService } from './autenticacao/autenticacao.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'app';
 
-  mostrarMenu: boolean = false;
+  mostrarMenu = false;
 
   constructor(
     private autenticacaoService: AutenticacaoService
   ){
-
+    this.autenticacaoService.statusObservable.subscribe(
+      (value: boolean ) => { this.mostrarMenu = value; console.log(value)} 
+    )
   }
 
   ngOnInit(){
-    this.autenticacaoService.mostrarMenuEmitter.subscribe(
-      (value) => { this.mostrarMenu = value;
-      console.log( value ); }
-    )
-    console.log(this.mostrarMenu);
+    
+    
+    // this.autenticacaoService.mostrarMenuEmitter.subscribe(
+    //   (value) => { this.mostrarMenu = value; console.log(value); }
+    // )
+
   }
+
+  // ngOnDestroy(){
+  //   this.autenticacaoService.getObsStatus();
+  // }
+
 }
