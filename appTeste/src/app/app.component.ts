@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AutenticacaoService } from './autenticacao/autenticacao.service';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+
 
 @Component({
   selector: 'app-root',
@@ -12,25 +14,32 @@ export class AppComponent {
 
   mostrarMenu = false;
 
+  // constructor(private autenticacaoService: AutenticacaoService, private changeDetector: ChangeDetectorRef) {
+  //   this.autenticacaoService.statusObservable.subscribe(
+  //     (value: boolean) => {
+  //       this.mostrarMenu = value;
+  //       this.changeDetector.detectChanges();
+  //     }
+  //   );
+  // }
+
   constructor(
-    private autenticacaoService: AutenticacaoService
+    private autenticacaoService: AutenticacaoService, 
+    private changeDetector: ChangeDetectorRef
   ){
-    this.autenticacaoService.statusObservable.subscribe(
-      (value: boolean ) => { this.mostrarMenu = value; console.log(value)} 
+    this.autenticacaoService.menuStatus.subscribe(
+      (value: boolean ) => { 
+        this.mostrarMenu = value;
+        console.log(value);
+        this.changeDetector.detectChanges();
+      } 
     )
   }
 
-  ngOnInit(){
-    
-    
-    // this.autenticacaoService.mostrarMenuEmitter.subscribe(
-    //   (value) => { this.mostrarMenu = value; console.log(value); }
-    // )
-
+  mostrarMenuFunc(): boolean{
+    return this.mostrarMenu;
   }
 
-  // ngOnDestroy(){
-  //   this.autenticacaoService.getObsStatus();
-  // }
+  ngOnInit(){}
 
 }

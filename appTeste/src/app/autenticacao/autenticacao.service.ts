@@ -19,7 +19,7 @@ export class AutenticacaoService {
   private status: boolean = false;
   private dados: any;
   
-  statusObservable = new Subject(); 
+  menuStatus = new EventEmitter(); 
 
   constructor(
     private http: Http, 
@@ -27,8 +27,9 @@ export class AutenticacaoService {
   ) {
     console.log("Iniciou o serviço de auth");
     this.populaDados();
-    this.statusObservable.next( false );
+    this.menuStatus.next( false );
   }
+
 
 
   
@@ -67,19 +68,17 @@ export class AutenticacaoService {
     
     if( this.buscaUsuario( nome, senha )){
       this.setStatusAutenticacao( true );
-      this.statusObservable.next( true );
-      this.mostrarMenuEmitter.emit( true );
+      this.menuStatus.emit( true );
       this.router.navigate( ['/']);
     }else{
-      this.statusObservable.next( false );
-      this.mostrarMenuEmitter.emit(false);
+      this.menuStatus.emit(false);
       alert( "Usuário Inválido!" );
     }
 
   }
 
   logout(){
-    this.statusObservable.next( false );
+    this.menuStatus.emit( false );
     this.status = false;
     this.router.navigate( ['/autenticacao'] );
   }
