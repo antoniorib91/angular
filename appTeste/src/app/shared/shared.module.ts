@@ -10,6 +10,9 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MenuTopComponent } from './menu-top/menu-top.component';
 
 import { CarouselModule } from 'ngx-bootstrap';
+import { TokenInterceptor } from './token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 
@@ -31,7 +34,13 @@ import { CarouselModule } from 'ngx-bootstrap';
     MenuTopComponent
   ],
   providers: [
-    ImagemService
+    ImagemService,
+    TokenInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }
   ]
 })
 export class SharedModule { }

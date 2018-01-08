@@ -10,5 +10,17 @@
     {
         "nome": "O Bando",
         "url": "/assets/onepiece3.jpeg"
+    },
+    {
+        "nome": "Luffy",
+        "url": "/assets/Luffy.png"
+    },
+    {
+        "nome": "Brook",
+        "url": "/assets/brook.png"
+    },
+    {
+        "nome": "Zoro",
+        "url": "/assets/zoro.jpg"
     }
 ]

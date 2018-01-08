@@ -6,7 +6,7 @@ import {
     Route, 
     ActivatedRouteSnapshot, 
     RouterStateSnapshot, 
-    Router} from '@angular/router';
+    Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -36,7 +36,7 @@ export class AutenticacaoGuard implements CanActivate, CanLoad {
         return false;
     }
     
-    
+
 
 
 }

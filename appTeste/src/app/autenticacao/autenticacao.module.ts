@@ -8,6 +8,7 @@ import { AutenticacaoRoutingModule } from './autenticacao-routing.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component'
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +20,8 @@ import { LogoutComponent } from './logout/logout.component'
     LoginComponent,
     LogoutComponent
   ],
-  providers: [],
+  providers: [
+  ],
 
 
 })

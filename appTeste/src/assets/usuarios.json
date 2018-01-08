@@ -3,7 +3,7 @@
         "nome":   "joao",
         "senha":  "123456",
         "tipo":   1,
-        "token":  "",
+        "token":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.8flYQw42k0eupKDf9SlOnNkQ0Q6drCgdZTA_Jb1GTm4",
         "exp":    "",
         "secret": "bagual"
     }
