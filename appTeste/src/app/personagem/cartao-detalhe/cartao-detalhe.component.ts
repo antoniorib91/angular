@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+
+
+import { Component, OnInit, Input } from '@angular/core';
+import { Http } from '@angular/http';
+
+import { Personagem } from './../../shared/model/personagem.model';
+
 
 @Component({
   selector: 'app-cartao-detalhe',
@@ -6,10 +12,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cartao-detalhe.component.css']
 })
 export class CartaoDetalheComponent implements OnInit {
+  
+  
+  @Input() personagem: Personagem;
 
   constructor() { }
 
   ngOnInit() {
+    console.log( this.personagem );
+    
   }
+  
+
 
 }

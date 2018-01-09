@@ -30,7 +30,6 @@ export class AppComponent {
     this.autenticacaoService.menuStatus.subscribe(
       (value: boolean ) => { 
         this.mostrarMenu = value;
-        console.log(value);
         this.changeDetector.detectChanges();
       } 
     )

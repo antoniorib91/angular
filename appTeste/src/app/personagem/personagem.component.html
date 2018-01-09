@@ -1,3 +1,3 @@
-<p>
-  personagem works!
-</p>
+<div class="row" *ngFor="let personagem of personagens">
+  <app-cartao-detalhe [personagem]="personagem"></app-cartao-detalhe>
+</div>

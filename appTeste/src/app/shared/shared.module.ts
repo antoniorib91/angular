@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -8,8 +9,11 @@ import { ImagemService } from './imagem.service';
 
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuTopComponent } from './menu-top/menu-top.component';
+import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 
 import { CarouselModule } from 'ngx-bootstrap';
+
+
 import { TokenInterceptor } from './token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -27,11 +31,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   declarations: [
     CarouselComponent,
-    MenuTopComponent
+    MenuTopComponent,
+    CampoControlErroComponent,
   ],
   exports: [
     CarouselComponent,
-    MenuTopComponent
+    MenuTopComponent,
+    CampoControlErroComponent
   ],
   providers: [
     ImagemService,

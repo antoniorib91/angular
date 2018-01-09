@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+import { PersonagemService } from './personagem.service';
+import { Personagem } from './../shared/model/personagem.model';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-personagem',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonagemComponent implements OnInit {
 
-  constructor() { }
+  personagens: Array<Personagem>;
+  inscricao: Subscription;
+  constructor(private personagemService: PersonagemService) { }
 
-  ngOnInit() {
+  ngOnInit( ) {
+    this.inscricao = this.personagemService.getPersonagens().subscribe(
+      (data) => this.personagens = data
+    );
+  }
+
+  ngOnDestroy() {
+   this.inscricao.unsubscribe();
   }
 
 }

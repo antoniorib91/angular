@@ -15,8 +15,6 @@ import base64url from "base64url";
 @Injectable()
 export class AutenticacaoService {
 
-  
-
   mostrarMenuEmitter = new EventEmitter<boolean>();
  
   private status: boolean = false;
@@ -27,7 +25,6 @@ export class AutenticacaoService {
   menuStatus = new EventEmitter(); 
 
   constructor(
-    // private http: HttpClient, 
     private http: Http,
     private router: Router
   ) {
@@ -74,7 +71,6 @@ export class AutenticacaoService {
 
     this.getUsuarios().subscribe( (data) => {
       this.dados = data;
-      
     });
 
   }
@@ -88,23 +84,18 @@ export class AutenticacaoService {
       this.setStatusAutenticacao( true );
       this.menuStatus.emit( true );       
       this.token = usuario.token;
-      this.router.navigate( ['/']);
+      return true;
       // let usr = {
       //   "nome": usuario.nome,
       //   "token": usuario.token,
       // }
       // localStorage.setItem('userSession', JSON.stringify(usr) );
-     
-      // let teste = this.http.get('https://httpbin.org/get').subscribe(
-      //   data => console.log(data),
-      //   err => console.log(err)
-      // );  
-
-    }else{
-      this.menuStatus.emit(false);
-      alert( "Usuário Inválido!" );
+  
     }
 
+    this.menuStatus.emit(false);
+    return false;
+  
   }
 
   logout(){
@@ -112,14 +103,18 @@ export class AutenticacaoService {
     localStorage.removeItem('userSession');
     this.menuStatus.emit( false );
     this.status = false;
-    this.router.navigate( ['/autenticacao'] );
-  
+    
   }
 
+  redirecionar(){
 
-
-
-  
+    if( this.status ){
+      this.router.navigate( ['/']);
+    }else{
+      this.router.navigate( ['/autenticacao'] );
+    }
+    
+  }
 
 }
 

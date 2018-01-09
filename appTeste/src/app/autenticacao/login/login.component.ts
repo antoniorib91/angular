@@ -11,6 +11,8 @@ import { AutenticacaoService } from '../autenticacao.service';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
+  mensagemDeErro: String = "";
+  statusErro = false;
 
   constructor(
     private autenticacaoService: AutenticacaoService,
@@ -18,16 +20,16 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.autenticacaoService.login( 'joao', '123456');
     this.criarFormLogin();
-    
   }
 
   criarFormLogin(){
+
     this.formulario = this.formBuilder.group({
       nome: [ null, [ Validators.required ] ],
       senha: [ null, [ Validators.required ] ]
     })
+
   }
 
   onSubmit(){
@@ -36,14 +38,28 @@ export class LoginComponent implements OnInit {
       
       let nome  = this.formulario.get('nome').value; 
       let email = this.formulario.get('senha').value;
-      
-      this.autenticacaoService.login( nome , email );
 
+      if( this.autenticacaoService.login( nome , email ) ){
+        this.statusErro = false;
+        this.autenticacaoService.redirecionar();
+      }else{
+        this.mensagemDeErro = "usuário ou senha incorreto";
+        this.statusErro = true;
+      }
+    
     }else{
-      alert("Form False");
+      this.mensagemDeErro = "válide os campos informados";
+      this.statusErro = true;
     }
+
   }
 
-  resetar(){}
+  resetar(){
+
+    this.formulario.reset();
+    this.statusErro = false;
+    
+  }
+
 
 }

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nome": "Luffy",
+        "img": "/assets/Luffy.png",
+        "descricao": "Luffy é o capitão dos chapéus de palha"
+    },
+    {
+        "id": 2,
+        "nome": "Brook",
+        "img": "/assets/brook.png",
+        "descricao": "Brook é o músico dos chápeus de palha"
+    },
+    {
+        "id": 3,
+        "nome": "Zoro",
+        "img": "/assets/zoro.jpg",
+        "descricao": "Zoro é o segundo no comando dos chápeus de palha"
+    }
+]
