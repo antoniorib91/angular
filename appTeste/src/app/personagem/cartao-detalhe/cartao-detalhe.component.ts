@@ -19,8 +19,7 @@ export class CartaoDetalheComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log( this.personagem );
-    
+        
   }
   
 
