@@ -1,6 +1,8 @@
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { Item } from './../../model/item.model';
 
 @Component({
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private loginService: LoginService
+    // private loginService: LoginService,
+    private modalRef: BsModalRef
   ) { 
     
   }
@@ -25,11 +28,11 @@ export class LoginComponent implements OnInit {
     
   }
 
-  googleLogin(){
-    this.loginService.googleLogin();
-  }
+  // googleLogin(){
+  //   this.loginService.googleLogin();
+  // }
 
-  login(){
+  // login(){
     
-  }
+  // }
 }
