@@ -1,0 +1,13 @@
+<div class="row">
+    <button>
+      <i class="material-icons">add</i>
+    </button>
+    <button>
+      <i class="material-icons">remove</i>
+    </button>
+</div>
+<div class="row">
+  <div *ngFor="let item of itensList">
+    <app-item-card [item]="item"></app-item-card>
+  </div>
+</div>

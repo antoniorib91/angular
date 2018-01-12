@@ -8,14 +8,9 @@ import { LoginService } from './../auth/login/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private loginService: LoginService) { }
+  constructor( ) { }
 
   ngOnInit() { 
-  }
-
-
-  openModal(){
-    this.loginService.openModal();
   }
 
 }
