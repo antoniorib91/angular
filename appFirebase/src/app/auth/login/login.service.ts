@@ -14,6 +14,7 @@ export class LoginService {
   constructor(
     private fireAuthService: AngularFireAuth,
     private bsModalService: BsModalService
+    
   ) {
     console.log('Iniciou Login Service');
   }
@@ -38,5 +39,6 @@ export class LoginService {
     this.modalRef = this.bsModalService.show( LoginComponent,
       Object.assign( {backdrop: 'static'}, { class: 'modal-sm'} )  );
   }
+
 
 }

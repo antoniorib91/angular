@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ItemFormComponent } from './item/item-form/item-form.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -13,11 +14,12 @@ import { ModalModule } from 'ngx-bootstrap';
 
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
-
+import { SharedModule } from './shared/shared.module';
+import { ItemModule } from './item/item.module';
 
 import { environment } from '../environments/environment';
 
-import { SharedModule } from './shared/shared.module';
+
 
 
 
@@ -36,9 +38,13 @@ import { SharedModule } from './shared/shared.module';
 
     AuthModule,
     HomeModule,
+    ItemModule,
     SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ItemFormComponent
+  ]
 })
 export class AppModule { }

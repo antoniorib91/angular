@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { LoginService } from '../auth/login/login.service';
-import { BtnAddComponent } from './btn-add/btn-add.component';
+import { ButtonComponent } from './button/button.component';
+import { InputComponent } from './input/input.component';
+
 
 @NgModule({
   imports: [
@@ -12,13 +14,15 @@ import { BtnAddComponent } from './btn-add/btn-add.component';
   ],
   declarations: [
     MenuComponent,
-    BtnAddComponent
+    ButtonComponent,
+    InputComponent
   ],
   providers: [
     LoginService
   ],
   exports: [
-    MenuComponent
+    MenuComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule { }

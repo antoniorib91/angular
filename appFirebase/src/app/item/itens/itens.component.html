@@ -1,10 +1,7 @@
 <div class="row">
-    <button>
-      <i class="material-icons">add</i>
-    </button>
-    <button>
-      <i class="material-icons">remove</i>
-    </button>
+  <app-button styleClass="btn-success" (onClick)="getEventClick($event)">
+    <i class="material-icons">add</i>
+  </app-button>
 </div>
 <div class="row">
   <div *ngFor="let item of itensList">
