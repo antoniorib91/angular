@@ -82,9 +82,15 @@ export class ItemFormComponent implements OnInit {
   }
   
   verificaValidTouched(campo: string){
-    console.log( this.formulario.get(campo));
-    // return !this.formulario.get(campo).valid && 
-    //   (this.formulario.get(campo).touched || this.formulario.get(campo).dirty );
+    return !this.formulario.get(campo).valid && 
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty );
+  }
+
+  aplicaCssErro(campo){
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    }
   }
 
   

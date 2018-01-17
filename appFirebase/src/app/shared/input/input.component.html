@@ -1,8 +1,10 @@
-<ng-content></ng-content>
-<div *ngIf="statusError">
-    <span class="glyphicon glyphicon-remove form-control-feedback" aria-describedby="campo"></span>
-    <span [id]="campo" class="sr-only">(error)</span>
-    <div class="alert alert-danger" role="alert">
-        {{ messageErro }}
-    </div>
+<ng-content>
+</ng-content>
+
+<div class="alert alert-danger" role="alert">
+    {{ mensagemDeErro }}
 </div>
+
+
+<!-- <span class="help-block" *ngIf="hasError()">
+        <i class="fa fa-remove"></i> {{mensagemDeErro}}</span> -->

@@ -49,7 +49,7 @@ export class ItensComponent implements OnInit {
 
 
     //this.getById('6SX4diyFqVXInxSGegEP');
-    this.removeById( '6SX4diyFqVXInxSGegEP' );
+    //this.removeById( '6SX4diyFqVXInxSGegEP' );
   }
 
   getById( id: string){

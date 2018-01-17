@@ -15,9 +15,7 @@ export class LoginService {
     private fireAuthService: AngularFireAuth,
     private bsModalService: BsModalService
     
-  ) {
-    console.log('Iniciou Login Service');
-  }
+  ) {}
 
   googleLogin(){
     this.fireAuthService.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() );
