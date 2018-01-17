@@ -22,7 +22,8 @@ import { InputComponent } from './input/input.component';
   ],
   exports: [
     MenuComponent,
-    ButtonComponent
+    ButtonComponent,
+    InputComponent
   ]
 })
 export class SharedModule { }

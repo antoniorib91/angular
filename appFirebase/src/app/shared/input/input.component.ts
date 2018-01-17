@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, forwardRef } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import {  } from '@angular/forms/src/model';
+
 
 @Component({
   selector: 'app-input',
@@ -7,10 +10,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
-  // @Input() tipo:    string;
-  // @Input() id:      string;
-  // @Input() classe:  string;
 
+  @Input() messageErro: string;
+  @Input() statusError: boolean;
+
+ 
   constructor() { }
 
   ngOnInit() {
