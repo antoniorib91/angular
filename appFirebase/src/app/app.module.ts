@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { ItemFormComponent } from './item/item-form/item-form.component';
 
@@ -17,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { ItemModule } from './item/item.module';
+import { ListaModule } from './lista/lista.module';
 
 import { environment } from '../environments/environment';
 import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.component';
@@ -42,6 +42,7 @@ import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.comp
     AuthModule,
     HomeModule,
     ItemModule,
+    ListaModule,
     SharedModule
   ],
   providers: [],

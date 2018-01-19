@@ -9,7 +9,11 @@ const routes: Routes = [
   },
   { 
     path:               'itens', 
-    loadChildren:       'app/item/item.module#ItemModule',
+    loadChildren:       'app/item/item.module#ItemModule'
+  },
+  {
+    path:               'listas',
+    loadChildren:       'app/lista/lista.module#ListaModule'
   }
 ];
 
