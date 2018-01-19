@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
+import { ItemService } from './../item.service';
 import { Item } from './../../model/item.model';
 
 
@@ -10,9 +12,36 @@ import { Item } from './../../model/item.model';
 export class ItemCardComponent implements OnInit {
 
   @Input() item: Item;
-  constructor() { }
+  itemsCollection: AngularFirestoreCollection<Item>;
 
-  ngOnInit() {
+  constructor( 
+    private firestore: AngularFirestore,
+    private itemService: ItemService
+    ) { 
+    this.itemsCollection = this.firestore.collection<Item>('item');
+  }
+
+  ngOnInit( ) {
+  }
+
+  removeItem( item ){
+    console.log( item.id );
+    this.removeById( item.id );
+  }
+
+  removeById( id: string ){
+    let doc = this.itemsCollection.doc<Item>( `${id}` );
+    let localInscription = doc.snapshotChanges().subscribe( data => {
+      if( data.payload.exists ){
+        doc.delete();
+      }else{
+        console.log( 'Item not found!' );
+      }
+    });
+  }
+
+  openEditItem(){
+    this.itemService.openModalEditItem( this.item );
   }
 
 }

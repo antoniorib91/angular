@@ -1,7 +1,7 @@
 <div class="modal-header">
   <div class="text-center">
     <h4 class="modal-title pull-left">
-      Novo Item
+      Editar Item
     </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -32,6 +32,17 @@
             </app-input>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="descricao">Descrição</label>
+          </div>
+          <div class="col-md-12" [ngClass]="aplicaCssErro('descricao')">
+            <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('descricao')">
+              <textarea maxlength="50" rows="4" style="resize: none;"
+              formControlName="descricao" id="descricao" class="form-control"></textarea>
+            </app-input>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
         <div class="row">
@@ -48,7 +59,7 @@
           </div>
           <div class="col-md-9">
             <div>
-              <h5 *ngIf="fileName">{{ fileName }}</h5>
+              <img class="imgShowInput" [src]="fileUrl" *ngIf="fileUrl" />
             </div>
           </div>
           <div class="col-md-12">
@@ -62,16 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-md-12">
-        <label for="descricao">Descrição</label>
-      </div>
-      <div class="col-md-12" [ngClass]="aplicaCssErro('descricao')">
-        <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('descricao')">
-          <input type="text" formControlName="descricao" id="descricao" class="form-control">
-        </app-input>
-      </div>
-    </div>
+
     <div class="form-group">
       <div class="col-md-12">
         <label for="url">Links</label>
@@ -81,7 +83,7 @@
           <div *ngFor="let link of links.controls; let i=index">
             <div class="col-md-10">
               <app-input mensagemDeErro="">
-                <input type="url" class="form-control" [formControlName]="i">
+                <input type="url" class="form-control" [formControlName]="i" style="margin: 2px;">
               </app-input>
             </div>
             <div class="col-md-2">
@@ -102,8 +104,6 @@
         <button type="button" class="btn btn-danger " (click)="modalRef.hide()">Cancelar</button>
       </div>
       <div class="col-md-12"></div>
-
     </div>
-
   </form>
 </div>

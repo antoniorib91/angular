@@ -1,13 +1,30 @@
-<div class="col-md-4">
-  <div class="myCard">
-    <img [src]="item.linkImg" alt="">
-      <p>{{ item.nome }}</p>
-      <p>{{ item.descricao }}</p>
-      <div *ngFor="let url of item.url" >
-        <a [href]="url">{{url}}</a>
+<div class="col-md-3 col-xs-6">
+  <div class="panel-default">
+    <div class="panel-header">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <h4 class="modal-title pull-left" style="line-height: 34px;">{{ item.nome }}</h4>
+          <button type="button" class="btn btnTools pull-right" (click)="removeItem(item)">
+            <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE872;</i>
+          </button>
+          <button type="button" class="btn btnTools pull-right" (click)="openEditItem()">
+            <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE254;</i>
+          </button>
+        </div>
       </div>
-      <p>Status:</p>
-      <p ng-if="item.status? == 1">1</p>
-      
+    </div>
+    <div class="panel-body" style="height: 430px;">
+      <div class="col-md-12">
+        <img [src]="item.imagem" class="panelImg">
+        <p>{{ item.descricao }}</p>
+        <div *ngFor="let link of item.links, let i = index">
+          <a [href]="link">Link {{ i + 1 }} </a>
+        </div>
+        <p>Status:</p>
+        <p ng-if="item.status? == 1">1</p>
+      </div>
+      <div class="col-md-12">
+      </div>
+    </div>
   </div>
 </div>

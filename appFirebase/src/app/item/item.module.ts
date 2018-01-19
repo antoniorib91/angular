@@ -10,6 +10,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
 
 
 import { SharedModule } from './../shared/shared.module';
+import { ItemFormEditComponent } from './item-form-edit/item-form-edit.component';
 
 
 
@@ -23,7 +24,8 @@ import { SharedModule } from './../shared/shared.module';
   declarations: [
     ItensComponent,
     ItemCardComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    ItemFormEditComponent
   ],
   providers: [
     ItemService

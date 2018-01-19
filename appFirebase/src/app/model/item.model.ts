@@ -1,9 +1,10 @@
 export interface Item {
 
+    id: string;
     nome: string;
     descricao: string;
-    linkImg: string;
+    imagem: string;
     status: number;
-    url: Array<string>;
+    links: Array<string>;
     valor: number;
 }

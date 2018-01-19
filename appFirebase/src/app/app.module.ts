@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { ItemModule } from './item/item.module';
 
 import { environment } from '../environments/environment';
+import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.component';
 
 
 
@@ -46,7 +47,8 @@ import { environment } from '../environments/environment';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    ItemFormComponent
+    ItemFormComponent,
+    ItemFormEditComponent
   ]
 })
 export class AppModule { }

@@ -2,7 +2,9 @@ import { Subscription } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { Item } from '../../model/item.model';
 
 
 @Component({
@@ -14,18 +16,23 @@ export class ItemFormComponent implements OnInit {
 
   formulario: FormGroup;
   fileName: string;
- 
+  inscricao: Subscription;
+  itemCollection: AngularFirestoreCollection<Item>;
   constructor( 
     private modalRef: BsModalRef,
     private formBuilder: FormBuilder,
-    private firestore: AngularFireStorage    
-  ){ }
+    private firestorage: AngularFireStorage,
+    private banco: AngularFirestore,
+  ){ 
+    this.itemCollection = this.banco.collection<Item>('item');
+  }
 
   ngOnInit() {
-    
-
     this.initFormulario();
-    
+  }
+
+  ngOnDestroy() {
+    this.inscricao.unsubscribe();    
   }
 
   initFormulario(){
@@ -67,9 +74,9 @@ export class ItemFormComponent implements OnInit {
     let img = this.formulario.get('imagem');
     if( img.value != null && img.value != undefined ){
       
-      let ref = this.firestore.ref(`itens/${img.value.name}`);
+      let ref = this.firestorage.ref(`itens/${img.value.name}`);
       let task = ref.put( img.value );
-      return task.downloadURL().subscribe( url => url );
+      return task.downloadURL()
     
     } else {
       return null;
@@ -78,7 +85,37 @@ export class ItemFormComponent implements OnInit {
   }
 
   formSubmit(){
+    if( this.formulario.valid ){
+      let item: Item;
+      this.inscricao = this.getDownloadImgRef().subscribe(
+        url => {
+          this.formulario.get('imagem').setValue( url );
+          item = this.formulario.value;
+          this.addItem( item );
+          console.log(JSON.stringify( this.formulario.value ));
+          this.modalRef.hide();
+        }
+      );
+      
 
+      
+    }else{
+      this.verificaValidacoesForm( this.formulario );
+    }
+  }
+
+  verificaValidacoesForm( formGroup: FormGroup ){
+    Object.keys( formGroup.controls).forEach(
+      campo => {
+
+        const controle = formGroup.get(campo);
+        controle.markAsDirty(); 
+        
+        if( controle instanceof FormGroup ){
+          this.verificaValidacoesForm( controle );
+        }
+      } 
+    );
   }
   
   verificaValidTouched(campo: string){
@@ -91,6 +128,11 @@ export class ItemFormComponent implements OnInit {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
     }
+  }
+
+
+  addItem( item: Item ){
+    this.itemCollection.add( item );
   }
 
   

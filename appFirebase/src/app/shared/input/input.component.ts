@@ -14,9 +14,9 @@ export class InputComponent implements OnInit, AfterContentInit {
   @Input() mensagemDeErro: string;
   @Input() statusError: boolean;
 
-
   @ContentChild(NgModel) model: NgModel;
   @ContentChild(FormControlName) control: FormControlName;
+  @ContentChild(Input) inputFile
  
   input: any;
 
@@ -32,12 +32,8 @@ export class InputComponent implements OnInit, AfterContentInit {
       throw new Error("Necessário informar o NgModel ou FormControlName para utilizar o input");
   }
 
-  hasSuccess(): boolean{
-    return this.input.valid && (this.input.dirty || this.input.touched)
-  }
-
-  hasError(): boolean {
-    return this.input.invalid && (this.input.dirty || this.input.touched)
+  verificaValidTouched(): boolean {
+    return !this.input.valid && (this.input.dirty || this.input.touched)
   }
 
 }

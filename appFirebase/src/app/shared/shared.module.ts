@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { LoginService } from '../auth/login/login.service';
-import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 
 
@@ -14,7 +13,6 @@ import { InputComponent } from './input/input.component';
   ],
   declarations: [
     MenuComponent,
-    ButtonComponent,
     InputComponent
   ],
   providers: [
@@ -22,7 +20,6 @@ import { InputComponent } from './input/input.component';
   ],
   exports: [
     MenuComponent,
-    ButtonComponent,
     InputComponent
   ]
 })
