@@ -7,5 +7,6 @@ export interface Lista {
     data:       string;
     titulo:     string;
     status:     number;
+    imagem:     string;
 
 }
