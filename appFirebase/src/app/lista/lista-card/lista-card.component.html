@@ -1,0 +1,27 @@
+<div class="col-md-3 col-xs-12">
+  <div class="panel-default">
+    <div class="panel-header">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <h4 class="modal-title pull-left" style="line-height: 34px;">teste</h4>
+          <button type="button" class="btn btnTools pull-right" (click)="removeItem(item)">
+            <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE872;</i>
+          </button>
+          <button type="button" class="btn btnTools pull-right" (click)="openEditItem()">
+            <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE254;</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body" style="height: 430px;">
+      <div class="col-md-12">
+        <img [src]="" class="panelImg">
+        <p>{{ lista.titulo }}</p>
+        <p>Status:</p>
+        <p ng-if="lista.status == 1">1</p>
+      </div>
+      <div class="col-md-12">
+      </div>
+    </div>
+  </div>
+</div>

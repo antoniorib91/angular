@@ -46,6 +46,7 @@ export class ItensComponent implements OnInit {
     this.itens = this.itemsCollection.snapshotChanges().map( itens => {
       return itens.map( i => { 
         const data = i.payload.doc.data();
+        
         const id = i.payload.doc.id;
         return { id, ...data } as Item
        })
