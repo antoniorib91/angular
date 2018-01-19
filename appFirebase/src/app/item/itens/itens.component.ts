@@ -31,7 +31,8 @@ export class ItensComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.inscricao.unsubscribe();    
+    if( this.inscricao != null || this.inscricao != undefined )
+      this.inscricao.unsubscribe();    
   }
 
   openAddModal(){
@@ -51,7 +52,6 @@ export class ItensComponent implements OnInit {
     });
 
     this.inscricao = this.itens.subscribe( itens => {
-      console.log(itens);
       this.itensList = itens;
     })
 

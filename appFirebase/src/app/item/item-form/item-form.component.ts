@@ -32,17 +32,18 @@ export class ItemFormComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.inscricao.unsubscribe();    
+    if( this.inscricao != null || this.inscricao != undefined )
+      this.inscricao.unsubscribe();
   }
 
   initFormulario(){
     this.formulario = this.formBuilder.group(
       {
-        nome: [ null, [ Validators.required ] ],
-        imagem: null,
-        valor: [ null, [ Validators.required ] ],
-        descricao: [ null, [ Validators.required] ],
-        links: new FormArray( [new FormControl()] )
+        nome:       [ null, [ Validators.required ] ],
+        imagem:       null,
+        valor:      [ null, [ Validators.required ] ],
+        descricao:  [ null, [ Validators.required] ],
+        links:      new FormArray( [new FormControl()] )
       }
     );
   }
@@ -92,7 +93,6 @@ export class ItemFormComponent implements OnInit {
           this.formulario.get('imagem').setValue( url );
           item = this.formulario.value;
           this.addItem( item );
-          console.log(JSON.stringify( this.formulario.value ));
           this.modalRef.hide();
         }
       );
