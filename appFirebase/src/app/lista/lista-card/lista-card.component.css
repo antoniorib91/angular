@@ -1,4 +1,4 @@
-.myCard{
+.myCard {
     border-radius: 3px;
     border: 1px solid darkgray;
     margin: 2%;
@@ -6,7 +6,7 @@
     margin-right: 2%;
     margin-left: 2%; 
     margin-bottom: 2%; */
-    padding:2%;
+    padding: 2%;
     /* padding-left: 1%;
     padding-top: 1%;
     padding-right: 1%;
@@ -23,9 +23,23 @@
     padding-bottom: 3%;
 }
 
-.btnTools{
+.btnTools {
     border: none;
     background: none;
     vertical-align: middle;
 }
-    
+
+.panel-default {
+    border-width: 3px;
+    border: 1px solid #1917170f;
+    border-radius: 6px;
+}
+
+
+  
+
+.panel-default:hover {
+    -webkit-box-shadow: 4px -2px 58px -16px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: 4px -2px 58px -16px rgba(0, 0, 0, 0.61);
+    box-shadow: 4px -2px 58px -16px rgba(0, 0, 0, 0.61);
+}

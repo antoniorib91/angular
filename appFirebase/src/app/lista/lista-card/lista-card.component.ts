@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lista } from '../../model/lista.model';
+import { ListaService } from '../lista.service';
 
 @Component({
   selector: 'app-lista-card',
@@ -9,9 +10,18 @@ import { Lista } from '../../model/lista.model';
 export class ListaCardComponent implements OnInit {
 
   @Input() lista: Lista;
-  constructor() { }
+  constructor(
+    private listaService: ListaService
+  ) { }
 
   ngOnInit() {
   }
 
+  removeList(){
+
+  }
+
+  openEditList(){
+    this.listaService.openModalAddLista();
+  }
 }

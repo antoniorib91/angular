@@ -1,3 +1,28 @@
-<p>
-  lista-form-create works!
-</p>
+<div class="modal-header">
+  <div class="text-center">
+    <h4 class="modal-title pull-left">
+      Nova Lista
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="formSubmit()">
+    <div class="col-md-12">
+      <label for="titulo" class="form-label">Titulo</label>
+    </div>
+    <div class="col-md-12" [ngClass]="aplicaCssErro('titulo')">
+      <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('titulo')">
+        <input type="text" formControlName="titulo" id="titulo" class="form-control">
+      </app-input>
+    </div>
+    <div class="form-group">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-danger " (click)="modal.hide()">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>

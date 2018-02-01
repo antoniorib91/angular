@@ -20,6 +20,7 @@ import { ListaModule } from './lista/lista.module';
 
 import { environment } from '../environments/environment';
 import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.component';
+import { ListaFormCreateComponent } from './lista/lista-form-create/lista-form-create.component';
 
 
 
@@ -49,7 +50,8 @@ import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.comp
   bootstrap: [AppComponent],
   entryComponents: [
     ItemFormComponent,
-    ItemFormEditComponent
+    ItemFormEditComponent,
+    ListaFormCreateComponent
   ]
 })
 export class AppModule { }
