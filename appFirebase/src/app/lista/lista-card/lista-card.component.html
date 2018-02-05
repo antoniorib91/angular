@@ -37,12 +37,13 @@
         </button>
       </div>
       <div class="col-md-12">
-        <img [src]="" class="panelImg">
-
+        <img [src]="lista.imagem" class="panelImg">
         <p style="height: 125px;">{{ lista.descricao }}</p>
       </div>
       <div class="col-md-12">
-        <button class="btn btn-success form-control">Verificar</button>
+        <button class="btn btn-success form-control" [routerLink]="lista.id + '/itens'">
+          Verificar
+        </button>
       </div>
     </div>
   </div>

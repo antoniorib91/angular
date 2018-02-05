@@ -7,13 +7,13 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form class="form-horizontal">
+  <form class="form-horizontal" [formGroup]="formulario">
     <div class="form-group">
       <div class="col-md-12">
         <label for="email" class="form-label">Email</label>
       </div>
       <div class="col-md-12">
-        <input type="email" class="form-control">
+        <input type="email" class="form-control" formControlName="email">
       </div>
     </div>
     <div class="form-group">
@@ -21,7 +21,7 @@
         <label for="senha" class="form-label">Senha</label>
       </div>
       <div class="col-md-12">
-        <input type="password" class="form-control">
+        <input type="password" class="form-control" formControlName="pass">
       </div>
     </div>
     <div class="form-group">

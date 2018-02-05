@@ -1,5 +1,3 @@
-import { Item } from './item.model';
-
 export interface Lista {
 
     id:         string;

@@ -14,7 +14,6 @@ export class LoginService {
   constructor(
     private fireAuthService: AngularFireAuth,
     private bsModalService: BsModalService
-    
   ) {}
 
   googleLogin(){
@@ -25,8 +24,13 @@ export class LoginService {
     this.fireAuthService.auth.signInWithPopup( new firebase.auth.FacebookAuthProvider() );
   }
 
-  login(){
-    
+  login( email: string, pass: string ){
+    this.fireAuthService.auth.signInWithEmailAndPassword( email, pass )
+    .then(
+      (result) => {
+        console.log( result.user );
+      }
+    )
   }
   
   logout(){

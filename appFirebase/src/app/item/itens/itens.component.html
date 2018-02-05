@@ -5,6 +5,7 @@
 </div>
 <div class="row">
   <div *ngFor="let item of itensList; let i=index">
-    <app-item-card [item]="item" [id]="id"></app-item-card>
+    <p>{{ item.id }}</p>
+    <!-- <app-item-card [item]="item" [id]="id"></app-item-card> -->
   </div>
 </div>

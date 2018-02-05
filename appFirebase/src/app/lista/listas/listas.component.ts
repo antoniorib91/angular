@@ -30,8 +30,8 @@ export class ListasComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if( !this.inscricao.closed )
-      this.inscricao.unsubscribe
+    if( this.inscricao.closed == false )
+      this.inscricao.unsubscribe();
     
   }
 

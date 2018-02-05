@@ -10,6 +10,8 @@ import { ListaService } from './lista.service';
 import { InputComponent } from '../shared/input/input.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerModule  } from 'ngx-bootstrap'
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ListaRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule
   ],
   declarations: [
     ListasComponent, 

@@ -97,8 +97,6 @@ export class ItemFormComponent implements OnInit {
         }
       );
       
-
-      
     }else{
       this.verificaValidacoesForm( this.formulario );
     }

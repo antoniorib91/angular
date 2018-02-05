@@ -9,8 +9,8 @@ const routes: Routes = [
     component: ListasComponent
   },
   {
-    path: ':id',
-    component: ListaComponent
+    path: ':id/itens',
+    loadChildren: 'app/item/item.module#ItemModule',
   }
 ];
 

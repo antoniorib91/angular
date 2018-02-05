@@ -10,6 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { BsDatepickerModule } from 'ngx-bootstrap'
 import { ModalModule } from 'ngx-bootstrap';
 
 import { AuthModule } from './auth/auth.module';
@@ -22,7 +23,9 @@ import { environment } from '../environments/environment';
 import { ItemFormEditComponent } from './item/item-form-edit/item-form-edit.component';
 import { ListaFormCreateComponent } from './lista/lista-form-create/lista-form-create.component';
 
-
+import { defineLocale } from 'ngx-bootstrap/bs-moment';
+import { ptBr } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBr);
 
 
 
@@ -39,6 +42,7 @@ import { ListaFormCreateComponent } from './lista/lista-form-create/lista-form-c
     AngularFireStorageModule,
     AngularFireAuthModule,
     ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
 
     AuthModule,
     HomeModule,

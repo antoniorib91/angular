@@ -7,10 +7,10 @@ const routes: Routes = [
     path:               '',
     loadChildren:       'app/home/home.module#HomeModule'
   },
-  { 
-    path:               'itens', 
-    loadChildren:       'app/item/item.module#ItemModule'
-  },
+  // { 
+  //   path:               'itens', 
+  //   loadChildren:       'app/item/item.module#ItemModule'
+  // },
   {
     path:               'listas',
     loadChildren:       'app/lista/lista.module#ListaModule'

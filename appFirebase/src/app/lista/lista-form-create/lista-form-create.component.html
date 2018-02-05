@@ -15,7 +15,7 @@
         <label for="titulo" class="form-label">Titulo</label>
       </div>
       <div class="col-md-12" [ngClass]="aplicaCssErro('titulo')">
-        <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('titulo')">
+        <app-input mensagemDeErro="Titulo obrigatorio" [statusError]="verificaValidTouched('titulo')">
           <input type="text" formControlName="titulo" id="titulo" class="form-control">
         </app-input>
       </div>
@@ -44,12 +44,34 @@
       </div>
       <div class="col-md-12" [ngClass]="aplicaCssErro('descricao')">
         <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('descricao')">
-          <textarea rows="2" maxlength="150" formControlName="descricao" id="descricao" 
-          class="form-control" style="resize: none;"></textarea>
+          <textarea rows="2" maxlength="150" formControlName="descricao" id="descricao" class="form-control" style="resize: none;"></textarea>
           <!-- <input type="text" formControlName="descricao" id="descricao" class="form-control"> -->
         </app-input>
       </div>
     </div>
+    <!-- <div class="form-group">
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <label class="" for="date">Data</label>
+          </div>
+          <div class="col-md-12">
+            <input formControlName="data" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+            <label class="" for="date">Hora</label>
+          </div>
+          <div class="col-md-12">
+
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <div class="form-group">
       <div class="col-md-12">
         <button type="submit" class="btn btn-success">Salvar</button>
