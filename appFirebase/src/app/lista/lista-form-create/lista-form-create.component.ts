@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { BsModalRef } from 'ngx-bootstrap';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { Lista } from '../../model/lista.model';
+import { Subscription } from 'rxjs/Subscription';
+import { UrlHandlingStrategy } from '@angular/router/src/url_handling_strategy';
 
 
 
@@ -19,6 +21,8 @@ export class ListaFormCreateComponent implements OnInit {
   private collection: AngularFirestoreCollection<Lista>;
 
   formulario: FormGroup;
+  inscricao: Subscription;
+  fileName: string;
   locale = 'pt-br';
 
 
@@ -29,7 +33,7 @@ export class ListaFormCreateComponent implements OnInit {
     private modal: BsModalRef,
     private localeService: BsLocaleService
   ) {
-    this.localeService.use( this.locale );
+    this.localeService.use(this.locale);
   }
 
   ngOnInit() {
@@ -37,13 +41,17 @@ export class ListaFormCreateComponent implements OnInit {
     this.initFormulario();
   }
 
+  ngOnDestroy() {
+    if (this.inscricao != undefined)
+      this.inscricao.unsubscribe();
+  }
+
   initFormulario() {
     this.formulario = this.formBuilder.group(
       {
         titulo: [null, [Validators.required]],
         imagem: null,
-        descricao: [null, [Validators.required]],
-        data: [null, [Validators.required]]
+        descricao: [null, [Validators.required]]
       }
     );
 
@@ -52,8 +60,22 @@ export class ListaFormCreateComponent implements OnInit {
   }
 
   formSubmit() {
+
     if (this.formulario.valid) {
-      this.modal.hide();
+      let lista: Lista;
+      console.log('entrou no if ');
+      this.inscricao = this.getDownloadImgRef().subscribe(
+        url => {
+          console.log(url);
+          this.formulario.get('imagem').setValue(url);
+          lista = this.formulario.value;
+          this.addLista(lista);
+          this.modal.hide();
+        },
+        error => {
+          console.log(error);
+        }
+      );
     } else {
       this.verificaValidacoesForm(this.formulario);
     }
@@ -93,6 +115,33 @@ export class ListaFormCreateComponent implements OnInit {
   addLista(lista) {
     lista.status = 1;
     this.collection.add(lista);
+  }
+
+  getDownloadImgRef() {
+
+    let img = this.formulario.get('imagem');
+    if (img.value != null && img.value != undefined) {
+
+      let ref = this.storage.ref(`listas/${img.value.name}`);
+      ref.put(img.value);
+      
+      return ref.getDownloadURL();
+
+    } else {
+      let ref = this.storage.ref('listas/default.png');
+      return ref.getDownloadURL();
+    }
+
+  }
+
+  onImgInput(event) {
+
+    if (event.target.files.length > 0) {
+      let file = event.target.files[0];
+      this.formulario.get('imagem').setValue(file);
+      this.fileName = file.name;
+    }
+
   }
 
 }

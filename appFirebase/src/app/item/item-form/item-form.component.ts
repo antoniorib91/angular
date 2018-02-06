@@ -96,7 +96,6 @@ export class ItemFormComponent implements OnInit {
           this.modalRef.hide();
         }
       );
-      
     }else{
       this.verificaValidacoesForm( this.formulario );
     }

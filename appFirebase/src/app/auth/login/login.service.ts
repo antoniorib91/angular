@@ -8,16 +8,19 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Injectable()
 export class LoginService {
 
-  modalRef: BsModalRef;
   statusUser: boolean = false;
 
   constructor(
-    private fireAuthService: AngularFireAuth,
-    private bsModalService: BsModalService
+    private fireAuthService: AngularFireAuth
   ) {}
 
   googleLogin(){
-    this.fireAuthService.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() );
+    this.fireAuthService.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() )
+    .then(
+      (result) => {
+        console.log( result.user.uid );
+      }
+    );
   }
 
   facebookLogin(){
@@ -37,10 +40,7 @@ export class LoginService {
     this.fireAuthService.auth.signOut();
   }
 
-  openModal(){
-    this.modalRef = this.bsModalService.show( LoginComponent,
-      Object.assign( {backdrop: 'static'}, { class: 'modal-sm'} )  );
-  }
+ 
 
 
 }
