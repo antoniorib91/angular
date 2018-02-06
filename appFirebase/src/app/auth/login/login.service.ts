@@ -1,3 +1,4 @@
+import { User } from './../../model/user.model';
 import { LoginComponent } from './login.component';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,35 +13,56 @@ export class LoginService {
 
   constructor(
     private fireAuthService: AngularFireAuth
-  ) {}
+  ) { }
 
-  googleLogin(){
-    this.fireAuthService.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() )
-    .then(
-      (result) => {
-        console.log( result.user.uid );
-      }
-    );
+  googleLogin() {
+    this.fireAuthService.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(
+        (result) => {
+          let user = result.user;
+
+          sessionStorage.setItem('user',
+            `{ 
+                id:     "${user.uid}",
+                nome:   "${user.displayName}",
+                email:  "${user.email}",
+                imagem: "${user.photoURL}"}`
+          );
+        }
+      );
   }
 
-  facebookLogin(){
-    this.fireAuthService.auth.signInWithPopup( new firebase.auth.FacebookAuthProvider() );
+  facebookLogin() {
+    this.fireAuthService.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then(
+        (result) => {
+          console.log(result);
+        }
+      );
   }
 
-  login( email: string, pass: string ){
-    this.fireAuthService.auth.signInWithEmailAndPassword( email, pass )
-    .then(
-      (result) => {
-        console.log( result.user );
-      }
-    )
+  login(email: string, pass: string) {
+    this.fireAuthService.auth.signInWithEmailAndPassword(email, pass)
+      .then(
+        (result) => {
+          let user = result.user;
+
+          sessionStorage.setItem('user',
+            `{ 
+                id:     "${user.uid}",
+                nome:   "${user.displayName}",
+                email:  "${user.email}",
+                imagem: "${user.photoURL}"}`
+          );
+        }
+      )
   }
-  
-  logout(){
+
+  logout() {
     this.fireAuthService.auth.signOut();
   }
 
- 
+
 
 
 }

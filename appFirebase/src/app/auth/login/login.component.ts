@@ -39,21 +39,17 @@ export class LoginComponent implements OnInit {
     const ctrl = this.formulario.controls;
     let email = ctrl['email'].value;
     let pass = ctrl['pass'].value;
-    //if (this.validaForm()) {
-      this.loginService.login(email, pass);
-    //}
+    
+    this.loginService.login(email, pass);
+    
   }
 
   googleLogin() {
-    //if (this.validaForm()) {
-      this.loginService.googleLogin();
-    //}
+    this.loginService.googleLogin();
   }
 
   facebookLogin() {
-    //if (this.validaForm()) {
-      this.loginService.facebookLogin();
-    //}
+    this.loginService.facebookLogin();
   }
 
   validaForm() {
