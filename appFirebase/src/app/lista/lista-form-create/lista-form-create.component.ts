@@ -6,11 +6,8 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { Lista } from '../../model/lista.model';
 import { Subscription } from 'rxjs/Subscription';
-import { UrlHandlingStrategy } from '@angular/router/src/url_handling_strategy';
 import { LoginService } from '../../auth/login/login.service';
 import { User } from '../../model/user.model';
-
-
 
 
 @Component({
@@ -18,6 +15,7 @@ import { User } from '../../model/user.model';
   templateUrl: './lista-form-create.component.html',
   styleUrls: ['./lista-form-create.component.css']
 })
+
 export class ListaFormCreateComponent implements OnInit {
 
   private collection: AngularFirestoreCollection<Lista>;
@@ -26,7 +24,6 @@ export class ListaFormCreateComponent implements OnInit {
   inscricao: Subscription;
   fileName: string;
   locale = 'pt-br';
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -85,6 +82,7 @@ export class ListaFormCreateComponent implements OnInit {
   }
 
   verificaValidacoesForm(formGroup: FormGroup) {
+
     Object.keys(formGroup.controls).forEach(
       campo => {
 
@@ -96,11 +94,13 @@ export class ListaFormCreateComponent implements OnInit {
         }
       }
     );
+
   }
 
   verificaValidTouched(campo: string) {
     return !this.formulario.get(campo).valid &&
       (this.formulario.get(campo).touched || this.formulario.get(campo).dirty);
+
   }
 
   aplicaCssErro(campo) {

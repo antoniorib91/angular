@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   atualizaMessageError(){
-    this.inscricao = this.loginService.errorMessageEmmiter.subscribe(
+    this.inscricao = this.loginService.errorMessageEmitter.subscribe(
       msg => {
         this.messageError = msg;
       }
@@ -60,13 +60,25 @@ export class LoginComponent implements OnInit {
     const pass  = ctrl['pass'].value;
     
     if ( this.validaForm() ) {
-      this.loginService.login(email, pass);   
+      this.loginService.login(email, pass);
+      this.inscricao = this.loginService.autenticouEmitter.subscribe(
+        status => {  
+          if( status == true)
+            this.modalRef.hide() 
+        }
+      )
     }
     
   }
 
   googleLogin() {
     this.loginService.googleLogin();
+    this.inscricao = this.loginService.autenticouEmitter.subscribe(
+      status => {  
+        if( status == true)
+          this.modalRef.hide() 
+      }
+    )
   }
 
   facebookLogin() {

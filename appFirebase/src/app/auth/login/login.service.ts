@@ -13,8 +13,8 @@ export class LoginService {
 
   private autenticacao = false;
 
-
-  errorMessageEmmiter = new EventEmitter<string>();
+  autenticouEmitter = new EventEmitter<boolean>();
+  errorMessageEmitter = new EventEmitter<string>();
 
   constructor(
     private fireAuthService: AngularFireAuth,
@@ -34,10 +34,11 @@ export class LoginService {
           let user = result.user;
           this.sessionSetUser( user );
           this.autenticacao = true;
+          this.autenticouEmitter.next(true);
         }
       ).catch(
       err => {
-        this.errorMessageEmmiter.next(err.message);
+        this.errorMessageEmitter.next(err.message);
       }
       );
   }
@@ -58,11 +59,12 @@ export class LoginService {
           let user = res.user;
           this.sessionSetUser( user );
           this.autenticacao = true;
+          this.autenticouEmitter.next(true);
         }
       )
       .catch(
       err => {
-        this.errorMessageEmmiter.next(err.message);
+        this.errorMessageEmitter.next(err.message);
       }
       )
   }

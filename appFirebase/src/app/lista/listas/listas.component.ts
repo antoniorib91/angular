@@ -40,6 +40,17 @@ export class ListasComponent implements OnInit {
     
   }
 
+  showAddButton(){
+    let sessionUsr = sessionStorage.getItem( 'user' );
+    
+    if( sessionUsr ){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+
   getSubColletion( id ): AngularFirestoreCollection<Item> {
     return this.firestore.collection<Lista>('lista').
     doc<Lista>(id).collection<Item>('itens');
@@ -59,15 +70,7 @@ export class ListasComponent implements OnInit {
     this.inscricao = this.obsListas.subscribe( listas => {
       this.listas = listas;
     });
-  }
 
-  showAddButton(){
-    let autenticacao = this.loginService.getStatusAutenticacao();
-    if( autenticacao ){
-      return true;
-    }else{
-      return false;
-    }
   }
 
   addLista(){
