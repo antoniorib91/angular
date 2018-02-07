@@ -1,8 +1,9 @@
-import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { LoginService } from './login.service';
 
 
 
@@ -16,6 +17,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
+  inscricao: Subscription;
+  autenticado: boolean;
+  messageError: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,6 +28,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { 
     this.initForm();
+    this.atualizaMessageError();
+  }
+
+  ngOnDestroy(){
+    if( this.inscricao != undefined )
+      this.inscricao.unsubscribe();
   }
 
   initForm() {
@@ -35,12 +45,23 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  atualizaMessageError(){
+    this.inscricao = this.loginService.errorMessageEmmiter.subscribe(
+      msg => {
+        this.messageError = msg;
+      }
+    )
+  }
+
+
   login() {
-    const ctrl = this.formulario.controls;
-    let email = ctrl['email'].value;
-    let pass = ctrl['pass'].value;
+    const ctrl  = this.formulario.controls;
+    const email = ctrl['email'].value;
+    const pass  = ctrl['pass'].value;
     
-    this.loginService.login(email, pass);
+    if ( this.validaForm() ) {
+      this.loginService.login(email, pass);   
+    }
     
   }
 
@@ -72,6 +93,18 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  verificaValidTouched(campo: string) {
+    return !this.formulario.get(campo).valid &&
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty);
+  }
+
+  aplicaCssErro(campo) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    }
   }
 
 

@@ -26,9 +26,8 @@
 </div> -->
 <div class="col-md-3 col-xs-12">
   <div class="panel-default">
-    <div class="panel-body" style="height: 430px;">
-      <div class="col-md-12">
-        <h4 class="modal-title pull-left" style="line-height: 34px;">teste</h4>
+    <div class="panel-header" >
+      <div class="col-md-12" *ngIf="showOptions()">
         <button type="button" class="btn btnTools pull-right" (click)="removeList()">
           <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE872;</i>
         </button>
@@ -36,9 +35,14 @@
           <i class="material-icons" style="vertical-align: middle; font-size: 20px">&#xE254;</i>
         </button>
       </div>
+    </div>
+    <div class="panel-body" style="height: 430px;">
       <div class="col-md-12">
-        <img [src]="lista.imagem" class="panelImg">
-        <p style="height: 125px;">{{ lista.descricao }}</p>
+        <h4 class="modal-title pull-left" style="line-height: 34px;">teste</h4>
+      </div>
+      <div class="col-md-12">
+        <!-- <img [src]="lista.imagem" class="panelImg"> -->
+        <!-- <p style="height: 125px;">{{ lista.descricao }}</p> -->
       </div>
       <div class="col-md-12">
         <button class="btn btn-success form-control" [routerLink]="lista.id + '/itens'">

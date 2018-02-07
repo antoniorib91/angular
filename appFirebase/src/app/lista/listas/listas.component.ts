@@ -8,6 +8,8 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Lista } from './../../model/lista.model';
 import { Item } from '../../model/item.model';
 import { firestore } from 'firebase/app';
+import { ListaService } from '../lista.service';
+import { LoginService } from '../../auth/login/login.service';
 
 @Component({
   selector: 'app-listas',
@@ -22,7 +24,10 @@ export class ListasComponent implements OnInit {
   inscricao: Subscription;
   
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private listaService: ListaService,
+    private loginService: LoginService
+
   ) { }
 
   ngOnInit() {
@@ -55,5 +60,19 @@ export class ListasComponent implements OnInit {
       this.listas = listas;
     });
   }
+
+  showAddButton(){
+    let autenticacao = this.loginService.getStatusAutenticacao();
+    if( autenticacao ){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  addLista(){
+    this.listaService.openModalAddLista();
+  }
+
 
 }

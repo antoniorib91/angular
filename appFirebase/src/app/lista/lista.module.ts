@@ -11,6 +11,8 @@ import { InputComponent } from '../shared/input/input.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule  } from 'ngx-bootstrap'
+import { AuthModule } from '../auth/auth.module';
+// import { LoginService } from '../auth/login/login.service';
 
 
 

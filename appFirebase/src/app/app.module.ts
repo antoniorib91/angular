@@ -25,9 +25,9 @@ import { ListaFormCreateComponent } from './lista/lista-form-create/lista-form-c
 
 import { defineLocale } from 'ngx-bootstrap/bs-moment';
 import { ptBr } from 'ngx-bootstrap/locale';
+import { LoginService } from './auth/login/login.service';
+import { ListaFormEditComponent } from './lista/lista-form-edit/lista-form-edit.component';
 defineLocale('pt-br', ptBr);
-
-
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ defineLocale('pt-br', ptBr);
   entryComponents: [
     ItemFormComponent,
     ItemFormEditComponent,
-    ListaFormCreateComponent
+    ListaFormCreateComponent,
+    ListaFormEditComponent
   ]
 })
 export class AppModule { }

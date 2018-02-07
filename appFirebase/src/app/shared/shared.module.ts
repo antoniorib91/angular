@@ -17,7 +17,6 @@ import { InputComponent } from './input/input.component';
     InputComponent
   ],
   providers: [
-    LoginService
   ],
   exports: [
     MenuComponent,

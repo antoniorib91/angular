@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModalService } from './login/login.modal.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule 
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LoginComponent

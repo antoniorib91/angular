@@ -17,7 +17,7 @@ export class ListaService {
     this.modalAddRef = this.bsModalService.show( ListaFormCreateComponent );
   }
 
-  openModalEditList( lista ){
+  openModalEditLista( lista ){
   
     this.modalEditRef = this.bsModalService.show( ListaFormEditComponent );
     this.modalEditRef.content.lista = lista;

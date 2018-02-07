@@ -7,6 +7,8 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { Lista } from '../../model/lista.model';
 import { Subscription } from 'rxjs/Subscription';
 import { UrlHandlingStrategy } from '@angular/router/src/url_handling_strategy';
+import { LoginService } from '../../auth/login/login.service';
+import { User } from '../../model/user.model';
 
 
 
@@ -31,7 +33,7 @@ export class ListaFormCreateComponent implements OnInit {
     private storage: AngularFireStorage,
     private banco: AngularFirestore,
     private modal: BsModalRef,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
   ) {
     this.localeService.use(this.locale);
   }
@@ -112,8 +114,11 @@ export class ListaFormCreateComponent implements OnInit {
     this.collection = this.banco.collection<Lista>('lista');
   }
 
-  addLista(lista) {
+  addLista(lista: Lista) {
+    const usr = JSON.parse( sessionStorage.getItem( 'user' ) );
+
     lista.status = 1;
+    lista.usuarioId = usr.id;
     this.collection.add(lista);
   }
 

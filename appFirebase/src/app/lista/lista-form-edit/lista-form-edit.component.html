@@ -1,3 +1,82 @@
-<p>
-  lista-form-edit works!
-</p>
+<div class="modal-header">
+  <div class="text-center">
+    <h4 class="modal-title pull-left">
+      Editar Lista
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="formSubmit()">
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="titulo" class="form-label">Titulo</label>
+      </div>
+      <div class="col-md-12" [ngClass]="aplicaCssErro('titulo')">
+        <app-input mensagemDeErro="Titulo obrigatorio" [statusError]="verificaValidTouched('titulo')">
+          <input type="text" formControlName="titulo" id="titulo" class="form-control">
+        </app-input>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="imagem">Imagem</label>
+      </div>
+      <div class="col-md-2">
+        <label class="btn btn-default form-control">
+          <span>
+            <i class="material-icons" style="font-size: 20px">&#xE2C6;</i>
+          </span>
+          <input type="file" style="display:none" id="imagem" (change)="onImgInput($event)">
+        </label>
+      </div>
+      <div class="col-md-10">
+        <div>
+          <img class="imgShowInput" [src]="fileUrl" *ngIf="fileUrl" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="descricao">Descrição</label>
+      </div>
+      <div class="col-md-12" [ngClass]="aplicaCssErro('descricao')">
+        <app-input mensagemDeErro="Campo obrigatório" [statusError]="verificaValidTouched('descricao')">
+          <textarea rows="2" maxlength="150" formControlName="descricao" id="descricao" class="form-control" style="resize: none;"></textarea>
+          <!-- <input type="text" formControlName="descricao" id="descricao" class="form-control"> -->
+        </app-input>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="" for="date">Data</label>
+            </div>
+            <div class="col-md-12">
+              <input formControlName="data" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="" for="date">Hora</label>
+            </div>
+            <div class="col-md-12">
+  
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-danger " (click)="modal.hide()">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
